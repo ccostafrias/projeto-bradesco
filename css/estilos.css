@@ -1,47 +1,55 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
 }
 
-/*absolute = elemento em que está inserido | relative = ele mesmo*/
+html, body {
+    min-height: 100svh;
+}
 
-.interface {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     color: #777;
 }
 
 header {
-    width: 100%;
-    height: 100px;
     background: #fff;
-    position: relative;
-    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
 }
 
-.logo {
-    position: absolute;
-    width: 300px;
-    height: auto;
+header img {
+    width: 150px;
 }
 
-.logo img{
-    width: 90%;
-    margin-left: 10%;
+img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
-nav {
-    position: absolute;
-    right: 30px;
-    bottom: 0px;
+ul {
+    list-style: none;
 }
+
+nav ul {
+    display: flex;
+    gap: 15px;
+}
+
 nav ul li {
-    float: left; 
-    color: #fff; 
-    width: auto; 
-    margin: 0.8em; 
-    font-size: 1.2em; 
     list-style: none;
     text-transform: uppercase;
 }
@@ -49,6 +57,7 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #bbb;
+    transition: color .2s ease;
 }
 
 nav ul li a:hover {
@@ -56,41 +65,53 @@ nav ul li a:hover {
 }
 
 #banner{
-    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-image: url('../img/banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
-#banner img {
-    width: 100%;
-    margin-bottom: 0;
+/* Modals */
+
+abbr {
+    font-weight: bold;
 }
 
-/* pop-up */
 .modalDialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background: rgba(181, 9, 9, .8);
     z-index: 9999;
-    opacity: 0;
-    transition: opacity 400ms ease-in;
     pointer-events: none;
-    display: none;
+    transition: opacity .2s ease-out;
+    opacity: 0;
+}
+
+.modalDialog p {
+    text-indent: 20px;
+    text-align: justify;
+    hyphens: auto;
 }
 
 .modalDialog:target {
-    display: block;
     opacity: 1;
     pointer-events: auto;
+    transition: opacity .2s ease-in;
 }
 
-.modalDialog div{
-    width: 500px;
+.modalDialog > div {
     position: relative;
-    margin: 10% auto;
-    padding: 5px 20px 13px 20px;
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
     border-radius: 10px;
     background-color: #fff;
 }
@@ -106,7 +127,7 @@ nav ul li a:hover {
     margin-left: 25%;
 }
 
-.close{
+.close {
     background-color: #606060;
     color: #fff;
     line-height: 25px;
@@ -124,199 +145,66 @@ nav ul li a:hover {
     background-color: #b50909;
 }
 
-/* rodapé */
-footer{
-    width: 100%;
-    height: 18%;
+/* Footer */
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 48px;
+    padding: 1em;
     background-color: #b50909;
     color: #fff;
-    position: relative;
-    float: left;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-footer .footer-text{
-    width: 30%;
-    margin: 1%;
-    position: relative;
-    float: left;
+@media (max-width: 700px) {
+    footer {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    #banner {
+        height: 300px;
+    }
 }
 
-footer .footer-text a{color: #fff;}
+footer h2 {
+    font-size: 1.4rem;
+}
 
-/* cor de fundo */
+footer .footer-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 250px;
+    text-align: center;
+}
 
-.color-page {background-color: #ddd;}
+footer .footer-text a { color: #fff; }
 
-/* imagem título*/
+/* Main two */
+
 .img-titulo {
-    width: 20%;
-    height: auto;
-    margin-bottom: 10px;
-    position: absolute;
-    margin-right: 5%;
+    padding: 20px;
 }
 
-.img-titulo img{
-    width: 70%;
-    margin-left: 20%;
-    margin-top: 50px;
-}
-
-/* clientes.html */
-
-#clientes {
-    width: 75%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-32.5%);
-
-}
-
-.config-clientes{
-    width: 40%;
-    border: 1px solid #b50909;
-    margin-left: 1.5%;
-    padding: 1%;
-    float: left;
-    margin-top: 30px;
-    background: #fff;
-}
-
-.config-clientes img{
-    width: 60%;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 20px;
-}
-
-.config-clientes p{
+#main-two-columns {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    max-width: 1000px;
     width: 90%;
-    margin-left: 5%;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    text-align: center;
+    margin: 0 auto;
 }
 
-.config-clientes a{color: #111;}
+@media (max-width: 768px) {
+    #main-two-columns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* sobre */
-
-#sobre{
-    width: 65%;
-    margin-left: 5%;
-    float: left;
-    position: relative;
-    height: 80%;
-    background: #fff;
-    left: 50%;
-    transform: translateX(-40%);
-}
-
-#txt-sobre {
-    width: 40%;
-    float: left;
-    position: relative;
-    padding: 5%;
-}
-
-#txt-sobre p{
-    width: 100%;
-    position: relative;
-    float: left;
-}
-
-#txt-sobre dl{
-    width: 50%;
-}
-
-#img-sobre{
-    width: 45%;
-    position: relative;
-    float: left;
-    padding: 2%;
-}
-
-#img-sobre img{
-    width: 100%;
-}
-
-/* contato.html */
-
-#contato {
-
-    width: 100%;
-    max-height: 500px;
-    position: relative;
-    float: left;
-}
-
-#contato form{
-    height: 420px;
-    width: 480px;
-    position: relative;
-    background: #fff;
-    padding: 25px;
-    float: left;
-    margin-left: 25%;
-}
-
-#contato form label{
-    font-weight: bold;
-}
-
-#contato form input{
-    max-width: 100%;
-    width: 99%;
-    height: 30px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #b50909;
-    padding-left: 1%;
-}
-
-#contato form textarea{
-    min-width: 99%;
-    max-width: 99%;
-    border: 1px solid #b50909;
-    padding-left: 1%;
-    min-height: 100px;
-}
-
-#contato form button{
-    width: 30%;
-    height: auto;
-    cursor: pointer;
-    background: #b50909;
-    color: #fff;
-    font-size: 1.5em;
-    padding: 15px 0;
-    margin-left: 35%;
-    margin-top: 5%;
-    border: none;
-}
-
-#conta-data{
-    width: 20%;
-    position: relative;
-    float: left;
-    padding: 25px;
-    background: #b50909;
-    color: #fff;
-    margin-left: 1.5%;
-    text-align: center;
-    min-height: 420px;
-}
-
-#conta-data h4{
-    color: #fff;
-    text-align: center;
-}
-#conta-data h5{
-    margin-top: 6%;
-    margin-bottom: 4%;
-    vertical-align: middle;
-}
-#conta-data h5 img{
-    width: 50px;
+    .img-titulo {
+        max-width: 350px;
+    }
 }

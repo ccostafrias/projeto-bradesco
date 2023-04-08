@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+body { background-color: #ddd; }
+
+#contato {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+#contato form {
+    flex: 1 0 auto;
+    background: #fff;
+    padding: 25px;
+}
+
+#contato form input,
+#contato form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #b50909;
+}
+
+#contato form label {
+    font-weight: bold;
+}
+
+#contato form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#contato form button {
+    display: block;
+    appearance: none;
+    padding: .5em .7em;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+
+    background: #b50909;
+    color: #fff;
+    cursor: pointer;
+}
+
+#conta-data {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    background: #b50909;
+    color: #fff;
+    text-align: center;
+}
+
+#conta-data h4 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 1.25rem;
+}
+
+#conta-data h5 img {
+    width: 50px;
+}
+
+@media (max-width: 700px) {
+    #contato {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #contato form {
+        max-width: 500px;
+        width: 100%;
+    }
+}

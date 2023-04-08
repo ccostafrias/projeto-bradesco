@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body { background-color: #ddd; }
+
+#sobre{
+    background: #fff;
+    height: fit-content;
+}
+
+#txt-sobre {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+p {
+    text-indent: 20px;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.focos {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+body { background-color: #ddd; }
+
+#clientes-wrapper {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#clientes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-content: center;
+    justify-content: center;
+
+    margin: 0 auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+.config-clientes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #b50909;
+    background: #fff;
+}
+
+.config-clientes p{
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.config-clientes a { color: #111;}
